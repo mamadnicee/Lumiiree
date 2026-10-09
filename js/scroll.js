@@ -1,0 +1,9 @@
+/* Scroll progress, subtle video parallax, reveal observer and active section. */
+(() => {
+ const bar=document.createElement('div');bar.setAttribute('aria-hidden','true');Object.assign(bar.style,{position:'fixed',zIndex:'100',top:'0',right:'0',height:'2px',width:'0%',background:'linear-gradient(90deg,#b88a38,#f3d587)',boxShadow:'0 0 12px rgba(212,175,55,.5)',pointerEvents:'none',transition:'width .08s linear'});document.body.appendChild(bar);
+ const nav=document.getElementById('siteNav'),back=document.getElementById('backTop'),video=document.querySelector('.hero-media');let busy=false;
+ function update(){const max=document.documentElement.scrollHeight-innerHeight;bar.style.width=`${max>0?scrollY/max*100:0}%`;nav?.classList.toggle('scrolled',scrollY>35);back?.classList.toggle('visible',scrollY>650);if(video&&scrollY<innerHeight*1.2)video.style.transform=`scale(1.06) translateY(${scrollY*.12}px)`;busy=false}
+ addEventListener('scroll',()=>{if(!busy){busy=true;requestAnimationFrame(update)}},{passive:true});update();
+ const items=document.querySelectorAll('.animate-on-scroll');if('IntersectionObserver'in window){const io=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');io.unobserve(entry.target)}}),{threshold:.12,rootMargin:'0px 0px -35px 0px'});items.forEach(el=>io.observe(el))}else items.forEach(el=>el.classList.add('visible'));
+ const sections=[...document.querySelectorAll('main section[id]')],links=[...document.querySelectorAll('.nav-pill a')];if('IntersectionObserver'in window){const active=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.hash===`#${e.target.id}`))}),{rootMargin:'-35% 0px -55% 0px'});sections.forEach(s=>active.observe(s))}
+})();
