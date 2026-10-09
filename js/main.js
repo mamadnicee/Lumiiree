@@ -1,0 +1,1 @@
+(() => {if(window.gsap&&window.ScrollTrigger){gsap.registerPlugin(ScrollTrigger)}document.documentElement.classList.add('js-ready')})();
