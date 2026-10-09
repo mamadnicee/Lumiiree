@@ -1,2 +1,0 @@
-/* Subtle pointer parallax on glass and title panels; disabled for touch. */
-(() => {'use strict';if(!matchMedia('(pointer:fine)').matches)return;const items=document.querySelectorAll('.glass-panel,.hero-copy');items.forEach(el=>{el.addEventListener('pointermove',e=>{const r=el.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;el.style.transform=`perspective(900px) rotateY(${x*2}deg) rotateX(${-y*2}deg)`});el.addEventListener('pointerleave',()=>{el.style.transform=''})})})();
