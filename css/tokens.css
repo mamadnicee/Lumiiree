@@ -1,0 +1,2 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+:root{--ink:#0D0B1A;--pink:#FF2D78;--cyan:#00F5FF;--lime:#AAFF00;--paper:#F4F1FA;--muted:#aaa5b7;--glass:rgba(21,17,39,.54);--line:rgba(255,255,255,.16);--body:'Space Grotesk',sans-serif;--display:'Bebas Neue',sans-serif;--gutter:clamp(24px,7vw,110px)}
