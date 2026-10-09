@@ -1,0 +1,1 @@
+export function initPreloader(){const el=document.querySelector('#preloader');const done=()=>el?.classList.add('done');if(document.readyState==='complete')setTimeout(done,350);else addEventListener('load',()=>setTimeout(done,250),{once:true});setTimeout(done,2200)}
